@@ -26,6 +26,14 @@
 
     <link rel="stylesheet" type="text/css" href="styles/style.css">
 
+    <style>
+        /* Set the size of the div element that contains the map */
+       #map {
+         height: 400px;  /* The height is 400 pixels */
+         width: 100%;  /* The width is the width of the web page */
+        }
+     </style>
+
 </head>
 
 <body>
@@ -78,6 +86,10 @@
             </div>
         </section>
 
+        <section class="row2">
+            <!--The div element for the map -->
+            <div id="map"></div>
+        </section>
 
         <section class="row">
             <div class="col">
@@ -109,33 +121,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- <section class="row3">
-
-        <center>
-            <div class="text5">
-                <h2>Balum nulla necante</h2>
-                <label>Cestibulum auctor dapibus lobor</label>
-                <p>Morbi in sem quis dui placerat ornare.Pellentesque odio nisi, euismod in, phareta a, ultrices in, diam am
-                    dui mi, tincidunt quis, accumsan porttitor, facilisis bi in sem quis dui placerat ornare.
-                </p>
-            </div>
-        </center>
-
-        <div class="row4">
-            <img class="img4" src="images/carousel-holder.png" alt="comp">
-            <div class="container">
-                <img class="mySlides" src="images/banner-full.jpg" alt="img1">
-                <img class="mySlides" src="images/jumbo-pic.png" alt="img2">
-                <img class="mySlides" src="images/service-img-2.png" alt="img3">
-                <img class="mySlides" src="images/service-img-1.png" alt="img4">
-            </div>
-            <div class="buttons">
-                <button class="button-left" onclick="plusDivs(-1)">&#10094;</button>
-                <button class="button-right" onclick="plusDivs(1)">&#10095;</button>
-            </div>
-        </div>
-    </section> -->
     </main>
 
     <footer class="row6">
@@ -150,11 +135,31 @@
 </body>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
     integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
     crossorigin="anonymous"></script>
+
+<script>
+    // Initialize and add the map
+    function initMap() {
+        // The location of Plovdiv office
+        var plovdivOffice = { lat: 42.149127, lng: 24.735679 };
+        // The map, centered at Plovdiv office
+        var map = new google.maps.Map(
+            document.getElementById('map'), { zoom: 16, center: plovdivOffice });
+        // The marker, positioned at Uluru
+        var marker = new google.maps.Marker({ position: plovdivOffice, map: map });
+    }
+</script>
+<!--Load the API from the specified URL
+            * The async attribute allows the browser to render the page while the API loads
+            * The key parameter will contain your own API key (which is not needed for this tutorial)
+            * The callback parameter executes the initMap() function
+            -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIlazhQcp-5sneK4uuadwle_lscPfbxI4&callback=initMap">
+</script>
 
 <script>
     var slideIndex = 1;
